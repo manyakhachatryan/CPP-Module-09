@@ -5,6 +5,7 @@ HEADER = BitcoinExchange.hpp
 
 %.o: %.cpp $(HEADER) 
 	$(CXX) $(CXXFLAGS) -o $@ -c $<
+	
 CXXFLAGS	= -Wall -Wextra -Werror -std=c++98
 CPP			= c++
 RM			= rm -f

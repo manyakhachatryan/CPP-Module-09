@@ -179,7 +179,7 @@ int  BitcoinExchange::parsRight(std::string str2)
         std::cout<< "Error: not a positive number."<< std::endl;
         return (0);
     } 
-    else if(value > 2147483647)
+    else if(value > 1000)
     {
         std::cout<< "Error: too large a number."<< std::endl;
         return (0);
