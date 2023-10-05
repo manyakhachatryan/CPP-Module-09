@@ -1,4 +1,3 @@
-
 #ifndef  BITCOINEXCHANGE_HPP
 #define  BITCOINEXCHANGE_HPP
 #include <iostream>
@@ -10,15 +9,18 @@
 class BitcoinExchange
 {
     public: 
-    // BitcoinExchange();
     void change();
     void dataToMap();
     void parseAndChange();
-    int inputPars(std::string data);
+    void inputPars(std::string data);
     int parsLeft(std::string str1);
+    int parsRight(std::string str2);
+    int  currentYear();
     std::string _fileName;
+    std::string _data;
+    double _value;
     std::map<std::string, double> dataMap;
-
+    std::string trim(std::string& input);
 };
 
 #endif
