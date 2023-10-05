@@ -5,8 +5,7 @@ int main(int argc, char **argv)
     (void)argv;
     if(argc==2)
     {
-        BitcoinExchange obj;
-        obj._fileName = argv[1];
+        BitcoinExchange obj(argv[1]);
         obj.change();
     } 
     else if(argc > 2)

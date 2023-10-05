@@ -8,8 +8,15 @@
 
 class BitcoinExchange
 {
-    public: 
-    void change();
+    public:
+        BitcoinExchange();
+        BitcoinExchange(std::string);
+        BitcoinExchange(const  BitcoinExchange& );
+        BitcoinExchange& operator=(const BitcoinExchange&);
+		~BitcoinExchange();
+        void change();
+
+    private:
     void dataToMap();
     void parseAndChange();
     void inputPars(std::string data);

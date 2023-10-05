@@ -1,5 +1,38 @@
 #include "BitcoinExchange.hpp"
 
+BitcoinExchange::BitcoinExchange()
+{
+    std::cout<<"Default constructor called"<<std::endl;
+}
+
+
+BitcoinExchange::BitcoinExchange(std::string argv)
+{
+    _fileName = argv;
+   std::cout<<"Parameterized constructor called"<<std::endl;
+}
+
+
+BitcoinExchange::BitcoinExchange(const BitcoinExchange&  t)
+{
+    (void)t;
+	std::cout<<"Copy constructor called"<<std::endl;
+}
+
+BitcoinExchange&BitcoinExchange::operator=(const BitcoinExchange& t)
+{
+    (void)t;
+	std::cout<<"Copy assignment operator"<<std::endl;
+	return (*this);
+}
+
+BitcoinExchange::~BitcoinExchange()
+{
+	std::cout<<"Destructor called"<<std::endl;
+}
+
+
+
 void BitcoinExchange::change()
 {
     std::ifstream ifs (_fileName);
