@@ -9,7 +9,6 @@ class Rpn
 {
     public:
         static int calculator(std::string str);
-        // static  Data* deserialize(uintptr_t raw);
     private:
         Rpn();
         ~Rpn();

@@ -1,15 +1,9 @@
 #include "rpn.hpp"
 
 std::stack <int> Rpn::_num;
-Rpn::Rpn()
-{
+Rpn::Rpn(){}
 
-}
-
-Rpn::~Rpn()
-{
-    
-}
+Rpn::~Rpn(){}
          
 Rpn::Rpn(const Rpn& t)
 {
@@ -22,7 +16,6 @@ Rpn& Rpn::operator=(const Rpn& t)
     return (*this);
 }
 
-
 int Rpn::calculator(std::string str)
 {
     if (str.find_first_not_of("0123456789-+*/ ")!= std::string::npos)
@@ -30,54 +23,43 @@ int Rpn::calculator(std::string str)
         std::cout<<"Error : Invalid Input"<<std::endl;
         return (0);
     }
-   int intValue;
-    std::string str1;
-  std::size_t start = 0;
-
- std::size_t end = start;
-
-
- int num1;
-//  int num2;
-    // str1 = str.substr(start, 1);
-    // std::cout<<"str1|"<<str1<<std::endl;
-    // start++;
   
-
-        size_t found = str.find(' ');
-
-    while((found!=std::string::npos) && start!=(str.length())) 
+    for(unsigned int i = 0; i<str.length(); i++)
     {
-        found = str.find(' ',end);
-        str1 = str.substr(start, 1);
-        end = start;
-        start++;
-        if (str1.find_first_not_of("-+*/")!= std::string::npos)
+        while(str[i]==' ')
+            i++;
+        if (isdigit(str[i]))
         {
-            
-
-             intValue = std::atoi(str1.c_str());
-            _num.push(intValue);
-            std::cout<<intValue<<std::endl;
-            // std::cout<<intValue<<std::endl;
-            // std::cout<<"Error "<<std::endl;
-        } else 
-        {
-
-            // num1 = _num.top();
-            // _num.pop();
-            // num2 = _num.top();
-            // _num.pop();
-            // std::cout<<"num1|"<<num1<<"|"<<std::endl;
-            // std::cout<<"num2|"<<num2<<"|"<<std::endl;
+            int value = str[i] - '0';
+            _num.push(value);
         }
-
-    //     //  std::cout<<start<<std::endl;
-    //     //   std::cout<<end<<std::endl;
+        else if(_num.size() >= 2)
+            {
+                int num1 = _num.top();
+                _num.pop();
+                int num2 = _num.top();
+                _num.pop();
+                switch (str[i])
+                {
+                    case '-' :
+                     _num.push(num2-num1);
+                     break;
+                        case '+' :
+                     _num.push(num2+num1);
+                      break;
+                        case '/' :
+                     _num.push(num2/num1);
+                      break;
+                        case '*' :
+                     _num.push(num2*num1);
+                      break;
+                }
+            }
     }
-    // std::size_t found = str.find(' ');
-   
-    
-    // std::cout<<_num.top()<<std::endl;
-    return (0);
+    if(_num.size()==1)
+        std::cout<<"The result is: "<<_num.top()<<std::endl;
+    else
+        std::cout<<"Error : Invalid Input"<<std::endl;
+        return (0);
 }
+
