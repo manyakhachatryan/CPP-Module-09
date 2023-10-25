@@ -1,6 +1,7 @@
 #include "rpn.hpp"
 
-std::stack <int> Rpn::_num;
+ std::stack <int> Rpn::_num;
+
 Rpn::Rpn(){}
 
 Rpn::~Rpn(){}
